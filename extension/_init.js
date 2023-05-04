@@ -14,9 +14,9 @@ module.exports = (function(){
  *       .every(method in Class.prototype) == true
  */
 function init(Class, methods){
-    assert(Array.isArray(methods), "methods must be (undefined) or string[] that includes name of fields/methods")
+    assert(Array.isArray(methods) || methods === void 0, "methods must be (undefined) or string[] that includes name of fields/methods")
 
-    methods = method || Object.keys(this.static).concat(Object.keys(this.prototype))
+    methods = methods || Object.keys(this.static).concat(Object.keys(this.prototype))
     let ex
 
     for(ex in this.static){
