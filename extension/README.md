@@ -299,3 +299,14 @@ Math.clamp(2, 1, 3) // 2
 Math.clamp(0, 1, 3) // 1
 Math.clamp(4, 1, 3) // 3
 ```
+
+<br>
+
+### Math.lerp(a, b, t)
+선형 보간 함수
+
+#### example
+```javascript
+Math.lerp(5, 10, 0.5) // 7.5
+Math.lerp(100, 200, 0.13) // 113
+```

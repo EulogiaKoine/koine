@@ -24,7 +24,7 @@ const _legacyAdaptor = chat => {
 };
 
 function printError(e){
-    return "☢ " + e.name + " ··· " + (e.lineNumber - 1) + "\n " + e.message + (e.stack.trim()? '\u200b'.repeat(500)+'\n'+e.stack: '')
+    return "☢ " + e.name + " ··· " + (e.lineNumber - 1) + "\n " + e.message + (e.stack? '\u200b'.repeat(500)+'\n'+e.stack: '')
 }
 
 function listenAsLegacy(chat){

@@ -1,43 +1,25 @@
 "use strict"
 
-module.exports = (function(){
+module.exports = function(_global, libPath){
 
-const list = [
-    "base",
-    "extension"
-]
+if(typeof _global !== "object" || !_global.Object)
+    throw new InternalError("koineLib - input global object as a 1st argument of lib")
 
-const output = {}
+libPath = typeof libPath === "string"? libPath
+            : String(com.xfl.msgbot.utils.SharedVar.Companion.getBotsPath())
+                .split('/').slice(0,-1).join('/')+'/global_modules/koine'
 
-function _init(_global, req){
-    if(req === "all"){
-        for(let pack of list){
-            if(!output[pack]){
-                pack = output[pack] = require('./'+pack+'/index.js')
-                pack.init(_global, "all")
-            }
-        }
-    } else {
-        if(typeof req === "object"){
-            for(let pack in req){
-                if(this.includes(pack) && !output[pack]){
-                    pack = output[pack] = require('./'+pack+'/index.js')
-                    pack.init(_global, req[pack])
-                }
-            }
-        } else {
-            for(let pack of Array.prototype.splice(arguments, 1)){
-                if(!output[pack]){
-                    pack = output[pack] = require('./'+pack+'/index.js')
-                    pack.init(_global, "all")
-                }
-            }
-        }
-    }
+//  라이브러리 존재 여부 검사
+if(java.io.File(libPath).list().indexOf("LICENSE") === -1)
+    throw new InternalError("koineLib - library path is WRONG!")
+
+const Package = require('./Package')(_global)
+const root = new Package('koine', libPath)
+const koine = {
+    PackageManager: root,
+    lib: root.getter
 }
 
 
-output.init = _init.bind(list)
-
-return output
-})()
+return koine
+}

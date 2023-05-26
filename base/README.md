@@ -11,9 +11,9 @@
 메신저봇R 기본 폴더/global_modules/koine/base/index.js가 존재하는 상태에서...
 ```javascript
 // 봇의 글로벌 스코프에서
-const koine = require('koine')
-koine.base.init(this /* [object global] */, "assert") // assert만 적용
-koine.base.init(this, "all") // 모두 적용
+const base = require('koine/base')
+base.init(this /* global scope */)
+base.import("assert", "inherits")
 ```
 
 <br>
