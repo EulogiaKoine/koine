@@ -46,6 +46,7 @@ koine.lib.packageName.moduleName // 직접 호출 가능
 
 1. [Package](#package)
 2. [Module](#module)
+3. [base 패키지](#base-패키지)
 
 ```d
 // 디렉토리 구조
@@ -122,3 +123,10 @@ module.exports = function(module, _global){
 &nbsp;***config.json***에 **requireInit**을 명시하지 않았지만 ***init.js***가 감지될 경우에는 암시적으로 <font color="blue">true</font>가 됩니다.
 
 &nbsp;또한, ***init.js***가 존재하더라도 **requireInit**가 <font color="red">false</font>라면 **init** 없이도 모듈을 사용할 수 있습니다.
+
+<br>
+
+### base 패키지
+&nbsp; 패키지 중 라이브러리에 공통으로 사용되거나, 기반이 되는 모듈들이 있을 수 있습니다. 내장되어 안정성을 위해 단정문을 지원하는 *assert*, 클래스(생성자) 간 상속을 돕는 *inherits*처럼요.
+
+&nbsp;이처럼 ***base*** 패키지에 내장된 모듈들은 라이브러리 로드 시 최초에 자동으로 init되는 점 유의해주세요!

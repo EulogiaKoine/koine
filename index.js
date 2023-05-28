@@ -15,6 +15,11 @@ if(java.io.File(libPath).list().indexOf("LICENSE") === -1)
 
 const Package = require('./Package')(_global)
 const root = new Package('koine', libPath)
+
+// base 패키지는 존재 시 자동 init
+if(PackageManager.getPackage("base"))
+    PackageManager.init('base')
+
 const koine = {
     PackageManager: root,
     lib: root.getter

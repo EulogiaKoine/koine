@@ -89,6 +89,23 @@ Object.defineProperty(Package.prototype, 'init', {
 })
 
 
+Object.defineProperty(Package.prototype, 'getPackage', {
+    value(req){
+        if(typeof req !== 'string')
+            throw new TypeError("packageName must be string")
+
+        if(req.includes('.')){
+            let split = req.indexOf('.')
+            let sub = req.slice(0, split)
+            if(sub in this.sub)
+                return this.sub[sub].getPackage(req.slice(split))
+        } else {
+            return this.sub[req]
+        }
+    }
+})
+
+
 
 
 

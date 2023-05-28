@@ -35,8 +35,10 @@ Object.defineProperty(Module.prototype, 'init', {
         if(FileStream.read(this.path+'/index.js') === null)
             throw new Error("there is no initialization file in module "+this.name)
         
-        require(this.path+'/init.js')(require(this.path), _global)
-        delete this.requireInit
+        if(java.io.File(this.path+'/init.js').exists()){
+            require(this.path+'/init.js')(require(this.path), _global)
+            delete this.requireInit
+        }
     }
 })
 
