@@ -20,6 +20,7 @@ require:
 - [Array](#array)
 - [String](#string)
 - [Math](#math)
+- [Date](#date)
 
 <br>
 
@@ -113,8 +114,11 @@ copy[0].test === arr[0].test // false
 - [Array.range()](#arrayrangestart-end-step)
 - [ES6 standards](#es6-standard-prototypes)
 - [Array.prototype.random()](#arrayprototyperandomstart-end)
+- [Array.prototype.randomPop()](#arrayprototyperandompopstart-end)
 - [Array.prototype.shake()](#arrayprototypeshakestart-end)
 - [Array.prototype.toShaken()](#arrayprototypetoshakenstart-end)
+- [Array.prototype.findLast()](#arrayprototypefindlastfinder)
+- [Array.prototype.findLastIndex()](#arrayprototypefindlastindexfinder)
 
 <br>
 
@@ -176,6 +180,14 @@ test.every(e => e === "regret") // true
 ```
 <br>
 
+### Array.prototype.randomPop(start, end)
+
+**random()** 과 동일하지만 반환되는 요소를 원본에서 제거한다.
+
+
+
+<br><br>
+
 
 ### Array.prototype.shake(start, end)
 ```javascript
@@ -204,6 +216,31 @@ Array.range(10).shake(5)
 shake와 동일하지만, 복사본을 반환한다.
 
 <br><br>
+
+
+### Array.prototype.findLast(finder)
+```javascript
+/**
+ * @param {function([value[, index, [this]]])} finder 
+ * @returns {*} value
+ */
+```
+
+**Array.prototype.find** 와 동일하지만, 마지막 인덱스부터 탐색한다.
+
+<br>
+
+### Array.prototype.findLastIndex(finder)
+```javascript
+/**
+ * @param {function([value[, index, [this]]])} finder 
+ * @returns {*} value
+ */
+```
+
+**Array.prototype.findIndex** 와 동일하지만, 마지막 인덱스부터 탐색한다.
+
+<br>
 
 
 --------------
@@ -310,3 +347,55 @@ Math.clamp(4, 1, 3) // 3
 Math.lerp(5, 10, 0.5) // 7.5
 Math.lerp(100, 200, 0.13) // 113
 ```
+
+<br><br><br>
+
+---
+
+## Date
+
+- [Date.prototype.format()]()
+- [Date.fromFormat()]()
+
+<br>
+
+### Date.prototype.format()
+
+```javascript
+/**
+ * @param {string?} pattern 날짜 정보를 반영할 문자열 형식
+ * @returns {string} 날짜 정보를 형식에 반영한 문자열
+ */
+```
+
+#### example
+```javascript
+new Date().format("y. MM. d. E요일")
+// 결과: "2023. 06. 7. 수요일"
+```
+
+#### 치환 형식
+
+![치환 형식 표](https://d33wubrfki0l68.cloudfront.net/77f1bd2b1cf55940f68402dd309ecc25221acbd6/6819a/static/1c200ea964ab45a912ccc15b4999bc2a/07a9c/simpledateformat-date-time-patterns.png)
+
+(*요일을 나타내는 E는 로컬 타임에 맞춰진다. 즉, 카톡봇에선 Tue가 아니라 '화'로 표시됨)
+
+<br><br>
+
+### Date.fromFormat()
+
+```javascript
+/**
+ * @param {string} str 날짜 정보를 담은 문자열
+ * @param {string?} pattern str의 형식을 명시하는 문자열
+ * @returns {Date} pattern을 이용해 str로부터 추출한 정보로 생성한 Date 객체
+ */
+```
+
+#### example
+```javascript
+Date.fromFormat("2023. 06. 7", "y. MM. d")
+// 결과: "Wed Jun 07 2023 00:00:00 GMT+0900 (GMT+09:00)"
+```
+
+기본 형식은 Date.prototype.format과 동일하다. 하지만 이유는 모르겠지만 요일 parse는 언어 무관 안된다.
