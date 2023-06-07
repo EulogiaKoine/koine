@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 /**
  * @name Array.prototype.with
  * @param {int} index
@@ -18,4 +18,4 @@ function _with(index, value){
 }
 
 return _with
-})()
+}

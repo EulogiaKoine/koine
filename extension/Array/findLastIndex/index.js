@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports = (function(){
+module.exports = function(){
 
 function findLastIndex(finder){
     let i = this.length
@@ -10,4 +10,4 @@ function findLastIndex(finder){
 }
 
 return findLastIndex
-})()
+}

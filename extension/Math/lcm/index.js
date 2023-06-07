@@ -1,8 +1,8 @@
 "use strict"
 
-module.exports = (function(){
+module.exports = function(){
 
-const gcd = require('../gcd')
+const gcd = pack.extension.Math.gcd
 
 function _lcm(a, b){
     return a*b/gcd(a,b)
@@ -17,7 +17,7 @@ function _lcm(a, b){
 function lcm(){
     if(arguments.length < 2)
         return arguments[0]
-    
+
     let v = arguments[0]
     for(let i of Array.prototype.splice.call(arguments, 1))
         v = _lcm(v, i)
@@ -25,4 +25,4 @@ function lcm(){
 }
 
 return lcm
-})()
+}

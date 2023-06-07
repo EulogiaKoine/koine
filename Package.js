@@ -3,7 +3,7 @@
 module.exports = function(_global){
 
 const Module = require('./Module')(_global)
-
+const PARENT_NAME = '$parent'
 
 /**
  * @name Package
@@ -45,13 +45,17 @@ Object.defineProperty(Package.prototype, 'apply', {
                     )
                     sub.setConfig(config)
                     Object.defineProperty(this.getter, content, {
-                        get: (s => () => s.import())(sub),
+                        get: ((s, pack) => () => s.import(pack))(sub, this.getter),
                         enumerable: true
                     })
                 } else if(config.type === "koinelib/package"){ // 패키지
                     this.sub[content] = sub = new Package(content, this.path+'/'+content)
                     Object.defineProperty(this.getter, content, {
                         value: sub.getter,
+                        enumerable: true
+                    })
+                    Object.defineProperty(sub.getter, PARENT_NAME, {
+                        value: this.getter,
                         enumerable: true
                     })
                 }
@@ -70,7 +74,7 @@ Object.defineProperty(Package.prototype, 'init', {
 
         else if(list.some(v => !(v.includes('.')? v.split('.')[0] in this.sub: v in this.sub)))
             throw new Error("init must be called with an existing module or package or none(=all)")
-        
+
         let sub
         for(let req of list){
             if(req.includes('.')){
@@ -81,7 +85,7 @@ Object.defineProperty(Package.prototype, 'init', {
                 else
                     throw new Error("there is no package named "+req[0])
             } else {
-                this.sub[req].init()
+                this.sub[req].init(this.getter)
             }
         }
     },

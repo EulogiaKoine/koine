@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 
 /**
  * @name Math.clamp
@@ -13,4 +13,4 @@ function clamp(value, min, max){
 }
 
 return clamp
-})()
+}

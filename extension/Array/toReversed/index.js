@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 
 /**
  * @name Array.prototype.toReversed
@@ -12,4 +12,4 @@ function toReversed(){
 }
 
 return toReversed
-})()
+}

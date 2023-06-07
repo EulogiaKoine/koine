@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 
 /**
  * @name Array.range
@@ -24,4 +24,4 @@ function range(start, end, step){
 }
 
 return range
-})()
+}

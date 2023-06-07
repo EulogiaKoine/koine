@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 /**
  * @name Object.entries
  * @param {object} obj any js object
@@ -10,4 +10,4 @@ function entries(obj){
 }
 
 return entries
-})()
+}

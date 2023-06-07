@@ -5,7 +5,7 @@
  * @version 1.0 2023. 5. 3
  */
 
-module.exports = (function(){
+module.exports = function(){
 
 let ignoranceLevel = 0 // ignore nothing
 
@@ -59,4 +59,4 @@ Object.defineProperty(assert, 'ignoranceLevel', {
 
 
 return assert
-})()
+}

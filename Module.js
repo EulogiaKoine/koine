@@ -21,22 +21,22 @@ Object.defineProperty(Module.prototype, 'setConfig', {
 })
 
 Object.defineProperty(Module.prototype, 'import', {
-    value(){
+    value(pack){
         if(this.requireInit)
             return null
         else
-            return require(this.path)
+            return require(this.path)(pack)
     },
     enumerable: true
 })
 
 Object.defineProperty(Module.prototype, 'init', {
-    value(){
+    value(pack){
         if(FileStream.read(this.path+'/index.js') === null)
             throw new Error("there is no initialization file in module "+this.name)
         
         if(java.io.File(this.path+'/init.js').exists()){
-            require(this.path+'/init.js')(require(this.path), _global)
+            require(this.path+'/init.js')(require(this.path)(pack), _global)
             delete this.requireInit
         }
     }

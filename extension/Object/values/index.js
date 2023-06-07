@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 
 /**
  * @name Object.values
@@ -11,4 +11,4 @@ function values(obj){
 }
 
 return values
-})()
+}

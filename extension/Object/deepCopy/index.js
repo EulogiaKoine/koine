@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports = (function(){
+module.exports = function(){
 /**
  * @name Object.deepCopy
  * @author 와!
@@ -29,4 +29,4 @@ function deepCopy(target) {
 
 
 return deepCopy
-})()
+}

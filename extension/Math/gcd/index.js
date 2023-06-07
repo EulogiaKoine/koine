@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 
 /**
  * @name Math.gcd
@@ -23,4 +23,4 @@ function gcd(a, b, c){
 }
 
 return gcd
-})()
+}

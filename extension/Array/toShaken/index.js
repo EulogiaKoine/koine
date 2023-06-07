@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 
 const _shake = require('../shake')
 
@@ -11,4 +11,4 @@ function toShaken(start, end){
 }
 
 return toShaken
-})()
+}

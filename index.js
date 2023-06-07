@@ -1,7 +1,6 @@
 "use strict"
 
-module.exports = function(_global, libPath){
-
+module.exports = function(_global, libPath,){
 if(typeof _global !== "object" || !_global.Object)
     throw new InternalError("koineLib - input global object as a 1st argument of lib")
 
@@ -20,11 +19,19 @@ const root = new Package('koine', libPath)
 if(root.getPackage("base"))
     root.init('base')
 
+if(!_global.kpack)
+    _global.kpack = root
+if(!_global.klib)
+    _global.klib = root.getter
+
+/*
 const koine = {
     PackageManager: root,
     lib: root.getter
 }
 
-
 return koine
+*/
+
+return void 0
 }

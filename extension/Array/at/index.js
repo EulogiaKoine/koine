@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 /**
  * @name Array.prototype.at
  * 
@@ -11,4 +11,4 @@ function at(index){
 }
 
 return at
-})()
+}

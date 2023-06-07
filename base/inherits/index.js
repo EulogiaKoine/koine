@@ -5,7 +5,7 @@
  * @version 1.0 2023. 5. 3
  */
 
-module.exports = (function(){
+module.exports = function(){
 
 function inherits(subClass, superClass) {
     if (typeof superClass !== "function" && superClass !== null) {
@@ -19,4 +19,4 @@ function inherits(subClass, superClass) {
 }
 
 return inherits;
-})();
+}

@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 /**
  * @name String.prototype.format
  * @param {{tag: value}} [m] if typeof m == "object" then replace all '{tag}' to (value), else generally work as value
@@ -28,4 +28,4 @@ function format(m){
 }
 
 return format
-})()
+}

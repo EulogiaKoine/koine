@@ -18,8 +18,9 @@
 <br>
 
 ```javascript
+// 라이브러리 설치
 const LIBRARY_PATH = '/storage/emulated/0/koine'
-const koine = require(LIBRARY_PATH)(
+require(LIBRARY_PATH)(
     this, // [object global] - 전역 객체
     LIBRARY_PATH // koine 라이브러리가 위치한 경로
     // 경로 기본값 = 메신저봇R의 global_modules/koine
@@ -27,13 +28,13 @@ const koine = require(LIBRARY_PATH)(
 
 // 각 모듈 별 초기 설정
 // 초기 설정이 필요한 모듈은 속성으로 호출 시 null이 반환됨
-koine.PackageManager.init(
+kpack.init(
     "packageName.moduleName",
     "base", // 해당 패키지의 모든 하위 모듈 적용
     "extension.Array.range"
 )
 
-koine.lib.packageName.moduleName // 직접 호출 가능
+klib.packageName.moduleName // 직접 호출 가능
 ```
 <br>
 <br>
@@ -97,6 +98,34 @@ koine //라이브러리
 }
 ```
 <br>
+
+
+&nbsp; <sup>(*version 0.4 추가)</sup>***index.js*** 파일은 기본적인 모듈 코드와 동일하되, 아래처럼 ***'함수를 반환하는 함수'*** 를 반환해야합니다.
+```javascript
+module.exports = function(pack){
+    ...
+    return func // 함수
+}
+```
+&nbsp;이때 export되는 함수가 자동으로 모듈의 **부모 패키지<sup>pack</sup>** 를 인자로 받아 실행되어 반환하는 함수 func가 바로 모듈이 제공하는 클래스/기능입니다. 이는 klib과 같이 속성으로 하위 모듈/패키지에 접근할 수 있습니다.
+
+&nbsp;pack.$parent로 상위 패키지에도 접근할 수 있습니다.
+
+```javascript
+module.exports = function(pack){
+    pack.$parent["현재 패키지명"] === pack // true
+    return func
+}
+```
+
+&nbsp;<font color="red"><b>*주의: </b> 모듈 자신을 참조하면 재귀 오류가 발생할 수 있습니다.</font>
+
+<br>
+
+&nbsp;조금 귀찮지만 모듈 간 소통을 원활히 하고 모듈 스코프를 클로저를 통해 확실히 분리하도록 하기 위함이니 양해 부탁드립니다.
+
+
+<br><br>
 
 &nbsp;단, 어떤 모듈은 사용 전 <b>초기 설정<sup>initialization</sup></b>을 요구하는 경우도 있을 수 있습니다. ***config.json***에 *requireInit* 속성을 명시함으로써 이 여부를 나타낼 수 있습니다.
 

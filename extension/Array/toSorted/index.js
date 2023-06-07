@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 /**
  * @name Array.prototype.toSorted
  * @param {function(*, *): int} compareFn
@@ -11,4 +11,4 @@ function toSorted(compareFn){
 }
 
 return toSorted
-})()
+}

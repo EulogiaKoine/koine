@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 
 /**
  * @name Array.prototype.random
@@ -17,4 +17,4 @@ function random(start, end){
 }
 
 return random
-})()
+}

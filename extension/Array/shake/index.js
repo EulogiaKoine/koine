@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function(){
 
 /**
  * @name Array.prototype.shake
@@ -30,4 +30,4 @@ function shake(start, end){
 
 
 return shake
-})()
+}
