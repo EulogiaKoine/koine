@@ -2,6 +2,7 @@
 module.exports = function(toShaken){
     if(!Array.prototype.toShaken)
         Object.defineProperty(Array.prototype, "toShaken", {
-            value: toShaken
+            value: toShaken,
+            writable: true
         })
 }

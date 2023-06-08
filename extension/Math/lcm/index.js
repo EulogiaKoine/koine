@@ -1,8 +1,8 @@
 "use strict"
 
-module.exports = function(){
+module.exports = function(pack){
 
-const gcd = pack.extension.Math.gcd
+const gcd = pack.gcd
 
 function _lcm(a, b){
     return a*b/gcd(a,b)

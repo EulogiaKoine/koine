@@ -1,7 +1,7 @@
 "use strict"
 module.exports = function(){
 
-const _shake = require('../shake')
+const _shake = require('../shake')()
 
 /**
  * @name Array.prototype.toShaken
