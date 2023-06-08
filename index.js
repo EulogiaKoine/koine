@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports = function(_global, libPath,){
+module.exports = function(_global, libPath){
 if(typeof _global !== "object" || !_global.Object)
     throw new InternalError("koineLib - input global object as a 1st argument of lib")
 
