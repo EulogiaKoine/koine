@@ -85,7 +85,11 @@ Object.defineProperty(Package.prototype, 'init', {
                 else
                     throw new Error("there is no package named "+req[0])
             } else {
-                this.sub[req].init(this.getter)
+                sub = this.sub[req]
+                if(sub instanceof Package)
+                    sub.init()
+                else
+                    sub.init(this.getter)
             }
         }
     },
