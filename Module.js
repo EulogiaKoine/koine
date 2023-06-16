@@ -24,8 +24,9 @@ Object.defineProperty(Module.prototype, 'import', {
     value(pack){
         if(this.requireInit)
             return null
-        else
-            return require(this.path)(pack)
+        if(this.cache)
+            return this.cache
+        return this.cache = require(this.path)(pack)
     },
     enumerable: true
 })

@@ -55,8 +55,7 @@ Object.defineProperty(Package.prototype, 'apply', {
                         enumerable: true
                     })
                     Object.defineProperty(sub.getter, PARENT_NAME, {
-                        value: this.getter,
-                        enumerable: true
+                        value: this.getter
                     })
                 }
             }
