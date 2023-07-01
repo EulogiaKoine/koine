@@ -242,6 +242,37 @@ shake와 동일하지만, 복사본을 반환한다.
 
 <br>
 
+### Array.prototype.count(value)
+```javascript
+/**
+ * @param {any} value 찾을 값
+ * /
+```
+&nbsp;배열에 포함된 해당 값과 일치하는 요소의 개수를 반환한다.
+
+<br>
+
+### Array.prototype.counts(values[])
+```javascript
+/**
+ * @param {Array|undefined} [values = every[]] 기본값 = 배열의 모든 요소
+ * @returns {Map}
+```
+&nbsp;주어진 값들이 각각 몇 개씩 배열에 포함되어 있는지를 ***값: 개수*** 의**맵(Map)** 객체로 반환한다.
+
+&nbsp;한 번의 순회에서 모든 값을 검사하기에 시간복잡도는 ***O(n)***. 개수를 검사해야할 값이 여럿이라면 똑같이 선형 탐색으로 ***O(n)*** 만큼이 걸리는 **count**보다 효율적이다.
+
+&nbsp;*참고: Map을 모르는 사람들을 위해.
+```javascript
+let counts = [1,2,3,4,5,1,2,3,1].counts([1,3,5])
+counts.get(1) // 3
+counts.get(3) // 2
+counts.get(5) // 1
+counts.get('1') // 0
+```
+
+
+<br><br>
 
 --------------
 ## String
@@ -346,6 +377,18 @@ Math.clamp(4, 1, 3) // 3
 ```javascript
 Math.lerp(5, 10, 0.5) // 7.5
 Math.lerp(100, 200, 0.13) // 113
+```
+
+<br>
+
+### Math.randint(a, b)
+임의의 정수 생성 함수.
+b가 없다면 0부터 a까지, 있다면 a~b 까지의 정수를 반환한다. 확률은 모두 동일하다.
+
+##### example
+```javascript
+Math.randint(0, 10) // 10
+Math.randint(4) // 3
 ```
 
 <br><br><br>
