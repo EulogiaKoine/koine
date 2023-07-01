@@ -13,7 +13,7 @@ module.exports = function(){
 function random(start, end){
     start = start >> 0 || 0
     end = end >> 0 || this.length
-    return this[Math.random() * (end - start) + start]
+    return this[Math.floor(Math.random() * (end - start) + start)]
 }
 
 return random
